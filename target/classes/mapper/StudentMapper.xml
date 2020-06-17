@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dao.StudentMapper">
+  <resultMap id="student" type="Student">
+    <id property="studentID" column="studentID"></id>
+    <result property="password" column="password"></result>
+    <result property="phone" column="phone"></result>
+    <result property="email" column="email"></result>
+  </resultMap>
+  <insert id="addStudent"  parameterType="Student">
+        insert into student(studentID,password,phone,email)values(#{studentID},#{password},#{phone},#{email})
+  </insert>
+
+  <select id="selectStudent" resultType="Student">
+        SELECT * FROM student
+  </select>
+
+</mapper>

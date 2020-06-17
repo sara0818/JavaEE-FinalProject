@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dao.Stu_homeworkMapper">
+  <resultMap id="studentHomework" type="Stu_homework">
+    <id property="studentID" column="teacherID"></id>
+    <result property="homeworkID" column="homeworkID"></result>
+    <result property="content" column="content"></result>
+  </resultMap>
+  <insert id="submitHomework"  parameterType="Stu_homework">
+        insert into stu_homework(studentID,homeworkID,content)values(#{studentID},#{homeworkID},#{content})
+  </insert>
+  <update id="resubmitHomework">
+        update stu_homework set content=#{content},updateTime=DATE_FORMAT(NOW(),'%Y-%m-%d %H:%m:%s') where studentID=#{studentID} and homeworkID=#{homeworkID}
+  </update>
+</mapper>
